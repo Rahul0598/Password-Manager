@@ -1,25 +1,30 @@
-Password-Manager
+# Password Manager
 
-Console based program to create new passwords. These passwords after encryption are stored in a file, along with the account name.
-Data stored in 'encryption_data.bin' in the same directory.
+### Installation
 
-Installation :
+Has been tested on Fedora 28, Python version 3.6.5
 
-import the password.py file.
- 
+Install the dependencies 
+
+```sh
 $ pip3 install cryptography
+```
 
-for fedora distribution:
+(For fedora users xsel- clipboard tool is required)
+```sh
 $ sudo dnf install xsel
+```
 
-Usage: 
+Open your favorite Terminal and run these commands.
 
-To add a new account:
+To create a password for a new account:
+```sh
 $ python3 password.py create [account_name]
+```
 
 To retrive a stored password:
-
+```sh
 $ python3 password.py get [account_name]
-The password is copied onto the clipboard, paste it where required.
-
-
+$ password for [account_name] is copied to your clipboard.
+```
+All the passwords are encrypted and stored alongside the account name, in the 'encrypted_data.bin' file, which is created in the same directory.
