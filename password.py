@@ -28,7 +28,6 @@ def getpw():
                 decrypted_pw = cipher.decrypt(encrypted_pw)
                 pyperclip.copy(decrypted_pw.decode())                
                 print('Password for ' + account.decode() + ' is copied to clipboard.')
-                print(pyperclip.paste())
                 return
 
 def createpw():
