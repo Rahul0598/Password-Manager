@@ -20,6 +20,6 @@ $ python3 password.py create [account_name]
 To retrive a stored password:
 
 $ python3 password.py get [account_name]
-
+The password is copied onto the clipboard, paste it where required.
 
 
