@@ -4,7 +4,7 @@
 
 Has been tested on Fedora 28, Python version 3.6.5
 
-Install the dependencies 
+Install the dependencies
 
 ```sh
 $ pip3 install cryptography
@@ -26,5 +26,10 @@ To retrive a stored password:
 ```sh
 $ python3 password.py get [account_name]
 $ password for [account_name] is copied to your clipboard.
+```
+
+To retrive the list of accounts with stored passwords:
+```sh
+$ python3 password.py show
 ```
 All the passwords are encrypted and stored alongside the account name, in the 'encrypted_data.bin' file, which is created in the same directory.
