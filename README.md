@@ -15,6 +15,8 @@ $ pip3 install cryptography
 $ sudo dnf install xsel
 ```
 
+### Usage
+
 Open your favorite Terminal and run these commands.
 
 To create a password for a new account:

@@ -11,6 +11,8 @@ import random
 import sys,pyperclip
 from cryptography.fernet import Fernet
 import linecache
+import os
+import time
 
 def getpw():
     with open(file_name,'r+b') as f:
@@ -28,6 +30,8 @@ def getpw():
                 decrypted_pw = cipher.decrypt(encrypted_pw)
                 pyperclip.copy(decrypted_pw.decode())
                 print('Password for ' + account.decode() + ' is copied to clipboard.')
+                time.sleep(6)
+                os.system("xsel -b --delete")
                 return
 
 def createpw():
@@ -67,7 +71,7 @@ def showStored():
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-       print('Usage: python3 password.py [create/get/show] [account]')
+       print('Usage: python3 password.py [create/get] [account]')
     file_name = 'encrypted_data.bin'
     line = linecache.getline(file_name, 1)
     if not line:
@@ -76,18 +80,17 @@ if __name__ == '__main__':
            f.write(cipher_key)
            f.write(b'\n')
     choice = sys.argv[1]
-    if choice == 'show':
+    account = sys.argv[2]
+    account = account.encode('utf-8')
+    line = linecache.getline(file_name, 1)
+    key = line[:-1].encode('utf-8')
+    cipher = Fernet(key)
+    link = b':'
+    if choice == 'create':
+        createpw()
+    elif choice == 'get':
+        getpw()
+    elif choice == 'show':
         showStored()
     else:
-        account = sys.argv[2]
-        account = account.encode('utf-8')
-        line = linecache.getline(file_name, 1)
-        key = line[:-1].encode('utf-8')
-        cipher = Fernet(key)
-        link = b':'
-        if choice == 'create':
-            createpw()
-        elif choice == 'get':
-            getpw()
-        else:
-            print('invalid option')
+        print('invalid option')
